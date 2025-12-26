@@ -1,12 +1,13 @@
 package com.nithin.config;
 
+import com.nithin.beans.PersonWiring;
 import com.nithin.beans.Phone;
 import com.nithin.beans.Vehicle;
+import com.nithin.beans.VehicleWiring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.lang.NonNullApi;
 
 @Configuration // the config annotation is used to tell the spring that its a config file which has the objects(Beans) and other config stuff
 
@@ -61,5 +62,21 @@ public class ProjectConfig {
     }
 
 
+    //Bean wiring and auto wiring
+
+    @Bean
+    VehicleWiring vehicleWiring() {
+        var vehicle = new VehicleWiring();
+        vehicle.setVehicleName("Audi Q3");
+        return  vehicle ;
+    }
+
+    @Bean
+    PersonWiring personWiring() {
+        var person = new PersonWiring() ;
+        person.setPersonName("Nithin Karne");
+        person.setVehicleWiring(vehicleWiring());
+        return person ;
+    }
 
 }

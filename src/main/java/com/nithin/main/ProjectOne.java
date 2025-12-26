@@ -115,23 +115,34 @@ public class ProjectOne {
         var getPhoneBean = context.getBean(RegisterBeanPhone.class) ;
         System.out.println("the phone is bean is " + getPhoneBean.getName());
 
-        Scanner sc = new Scanner(System.in) ;
-        int number = sc.nextInt() ;
+//        Scanner sc = new Scanner(System.in) ;
+//        int number = sc.nextInt() ;
+//
+//
+//        //creating beans based on conditions ...
+//        if(number>34) {
+//            context.registerBean("phoneBeanTwo" , RegisterBeanPhone.class , phoneBeanSupplier);
+//        }
+//        else{
+//            context.registerBean("laptopBeanTwo" , RegisterBeanLaptop.class, lenovoLaptopSupplier);
+//        }
+//
+//        try {
+//            var beanLaptopTwo = context.getBean("phoneBeanTwo" , RegisterBeanPhone.class) ;
+//            System.out.println("the try catch beanLaptopTwo bean name " + beanLaptopTwo.getName());
+//        } catch (NoSuchBeanDefinitionException e) {
+//            System.out.println("The bean does not exist ");
+//        }
+
+        // Wiring Beans and Auto-Wiring
+
+        var vehicle = context.getBean(VehicleWiring.class) ;
+        System.out.println(vehicle.getVehicleName());
+
+        var person = context.getBean(PersonWiring.class) ;
+        System.out.println(person.getPersonName());
+        System.out.println(person.getVehicleWiring());
 
 
-        //creating beans based on conditions ...
-        if(number>34) {
-            context.registerBean("phoneBeanTwo" , RegisterBeanPhone.class , phoneBeanSupplier);
-        }
-        else{
-            context.registerBean("laptopBeanTwo" , RegisterBeanLaptop.class, lenovoLaptopSupplier);
-        }
-
-        try {
-            var beanLaptopTwo = context.getBean("phoneBeanTwo" , RegisterBeanPhone.class) ;
-            System.out.println("the try catch beanLaptopTwo bean name " + beanLaptopTwo.getName());
-        } catch (NoSuchBeanDefinitionException e) {
-            System.out.println("The bean does not exist ");
-        }
     }
 }
